@@ -67,7 +67,7 @@ void main()
 	Value = 1; //Why is this allowed if expression Value() is not an lvalue?
 	Value += 1; //Error: cannot modify expression `Value()` because it is not an lvalue
 }
-```  
+```d  
 * Having to write ()() just to avoid ambiguity
 ```d
 int getNum() { return 1; }
