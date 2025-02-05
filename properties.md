@@ -37,7 +37,8 @@ void main()
 }
 ```
 * The capabilities of ctfe isn’t clear in the documentation. Which because of this, it is not clear when it comes to the programmers intent. I.E. is it meant to be used as if it were a type or is it meant to be used as an ordinary function?  
-```int x;
+```d
+int x;
 int Value()
 {
 	return x;
