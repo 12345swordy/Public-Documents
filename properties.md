@@ -144,7 +144,42 @@ void main()
 	test(Value); //Test function is being rewritten as test(void function(int) x, int function() x) and pass as test(__traits(properties, void), __traits(properties, int))
 }
 ```
+* Support array index for arrays
+```d
+int[] x;
 
+@property int Value(size_t i1)
+{
+	return x[i1];
+}
+@property void Value (int value, size_t i1)
+{
+	x[il] = value;
+}
+void main()
+{
+	int y = Value[0]
+	Value[0] = 3;
+}
+```
+* Support multi array index for multi dimentional arrays
+```d
+int[] x;
+
+@property int Value (size_t i1, size_t i2)
+{
+	return x;
+}
+@property void Value (int value, size_t i1, size_t i2)
+{
+	x[il * i2] = value;
+}
+void main()
+{
+	int y = Value[0,0]
+	Value[0,0] = 3;
+}
+```
 # Why not a library feature?
 
 The comment argument against properties is to make it as part of a library instead of a language feature. However there are several drawbacks to implementing this as a library.
