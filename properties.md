@@ -126,7 +126,7 @@ void main()
 }
 ```
  
-* If it is possbile for the paramaters to read and write to the @property, then the inout parameter must be rewritten as two paramaters that accept both the read and write functions of @property  
+* If it is possible for the parameters to read and write to the @property, then the inout parameter must be rewritten as two parameters that accept both the read and write functions of @property  
 ```d
 int x;
 
