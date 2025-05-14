@@ -90,8 +90,8 @@ void main()
 @property int Value(){}
 void function(int) set = &Value; //not allow
 int function() get = &Value //not allow
-void function(int) set = __traits(properties, void)
-int function() get = __traits(properties, int)
+void function(int) set = __traits(properties, set, Value)
+int function() get = __traits(properties, get, Value)
 ```
 * You can’t use parentheses on them when using them:
 ```d
@@ -141,7 +141,25 @@ int x;
 void void test(inout int x) { x += 1; }
 void main()
 {
-	test(Value); //Test function is being rewritten as test(void function(int) x, int function() x) and pass as test(__traits(properties, void), __traits(properties, int))
+	test(Value);
+}
+```
+Being rewritten as:
+```d
+int x;
+
+@property int Value()
+{
+	return x;
+}
+@property void Value(int value)
+{
+	x = value;
+}
+void void test(@property void function(int) x, @property int function() x) { x += 1; }
+void main()
+{
+	test(__traits(properties, set, Value), __traits(properties, get, Value))
 }
 ```
 # Why not a library feature?
